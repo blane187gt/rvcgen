@@ -1,5 +1,5 @@
 # **Harmonify (RVC No UI Colab)**
-https://colab.research.google.com/drive/1X8YR4Ruv7zzY8YAMPTfC7hkxqT_d4Q5d#scrollTo=ETi_iuahSocg
+https://colab.research.google.com/drive/1X8YR4Ruv7zzY8YAMPTfC7hkxqT_d4Q5d
 
 ## **Credits**
 [Eempostor](https://discordapp.com/users/818050831034613771) - Made everything work together, Notebook creator
