@@ -1,7 +1,7 @@
-# Harmonify (RVC No UI Colab)
+# **Harmonify (RVC No UI Colab)**
 https://colab.research.google.com/drive/1X8YR4Ruv7zzY8YAMPTfC7hkxqT_d4Q5d#scrollTo=ETi_iuahSocg
 
-## **| Credits |**
+## **Credits**
 [Eempostor](https://discordapp.com/users/818050831034613771) - Made everything work together, Notebook creator
 
 [Applio](https://github.com/IAHispano/Applio-RVC-Fork) by [IAHispano](https://github.com/IAHispano) - The repo this colab is based on
@@ -16,7 +16,7 @@ https://colab.research.google.com/drive/1X8YR4Ruv7zzY8YAMPTfC7hkxqT_d4Q5d#scroll
 
 If you have any suggestions or problems on this colab, dm [me](https://discordapp.com/users/818050831034613771) on discord.
 
-## Changelogs
+## **Changelogs**
 9/3/2024 | Huge changes
 - Pitch extraction `fcpe` now uses the `torchfcpe` library. You can still use the previous version with `fcpe_legacy`
 - `MIN_PITCH` and `MAX_PITCH` now accepts pitch notations
