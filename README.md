@@ -3,15 +3,10 @@ https://colab.research.google.com/drive/1X8YR4Ruv7zzY8YAMPTfC7hkxqT_d4Q5d#scroll
 
 ## **Credits**
 [Eempostor](https://discordapp.com/users/818050831034613771) - Made everything work together, Notebook creator
-
 [Applio](https://github.com/IAHispano/Applio-RVC-Fork) by [IAHispano](https://github.com/IAHispano) - The repo this colab is based on
-
 [CNChTu](https://github.com/CNChTu) - [FCPE](https://github.com/CNChTu/FCPE) F0 method
-
 [So Vits SVC](https://github.com/svc-develop-team/so-vits-svc) - [FCPE](https://github.com/CNChTu/FCPE) F0 method script
-
 [ChatGPT](https://chat.openai.com/) - Helper
-
 [Phind](https://www.phind.com/) - Helper
 
 If you have any suggestions or problems on this colab, dm [me](https://discordapp.com/users/818050831034613771) on discord.
@@ -23,12 +18,9 @@ If you have any suggestions or problems on this colab, dm [me](https://discordap
 - Fixed error when running inference without a GPU (GPU is still recommended as its way faster and more stable)
 - Fixed error when running `hybrid` with `pm`, `dio`, and `harvest`
 - Overhaulled the directory structure and some code
-
 14/1/2024 | Fixes
 - Fixed `Cannot retrieve the public link of the file` issue while downloading models from google drive
-
 10/1/2024 | Fixes
 - Fixed `Cannot retrieve the public link of the file` issue on installation
-
 12/12/2023 | Small adjustments
 - Moved `DOWNLOAD` and `SAVE_TO_DRIVE` option on inference cell into a new cell
