@@ -251,7 +251,7 @@ class Pipeline(object):
             torch.from_numpy(x).float().unsqueeze(0).unsqueeze(-1).to(self.device),
             sr=sr,
             decoder_mode="local_argmax",
-            threshold=0.03,
+            threshold=0.006,
             f0_min=f0_min,
             f0_max=f0_max,
             output_interp_target_length=p_len
