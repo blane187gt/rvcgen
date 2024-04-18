@@ -127,7 +127,7 @@ def infer_audio(
     ):
     os.environ["rmvpe_model_path"] = rmvpe_model_path
     os.environ["fcpe_model_path"] = fcpe_model_path
-    configs = Configs('cuda:0', False)
+    configs = Configs('cuda:0', True)
     vc = VC(configs)
     pth_path, index_path = get_model(model_name)
     vc_data = vc.get_vc(pth_path, protect, 0.5)
