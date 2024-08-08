@@ -1,4 +1,12 @@
 import os
+import re
+import random
+from scipy.io.wavfile import write
+from scipy.io.wavfile import read
+import numpy as np
+import gradio as gr
+import yt_dlp
+import subprocess
 import shutil
 import gc
 import torch
@@ -98,9 +106,51 @@ def get_model(voice_model):
 
     return os.path.join(model_dir, model_filename), os.path.join(model_dir, index_filename) if index_filename else ''
 
+
+
+def download_audio(url):
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'outtmpl': 'ytdl/%(title)s.%(ext)s',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'wav',
+            'preferredquality': '192',
+        }],
+    }
+
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        info_dict = ydl.extract_info(url, download=True)
+        file_path = ydl.prepare_filename(info_dict).rsplit('.', 1)[0] + '.wav'
+        sample_rate, audio_data = read(file_path)
+        audio_array = np.asarray(audio_data, dtype=np.int16)
+
+        return sample_rate, audio_array
+
+def roformer_separator(roformer_audio, roformer_model, roformer_output_format, roformer_overlap, roformer_segment_size):
+  files_list = []
+  files_list.clear()
+  directory = "./outputs"
+  random_id = str(random.randint(10000, 99999))
+  pattern = f"{random_id}"
+  os.makedirs("outputs", exist_ok=True)
+  write(f'{random_id}.wav', roformer_audio[0], roformer_audio[1])
+  full_roformer_model = roformer_models[roformer_model]
+  prompt = f"audio-separator {random_id}.wav --model_filename=model_bs_roformer_ep_317_sdr_12.9755.ckpt --output_dir=./outputs --output_format=wav --normalization=0.9 --mdxc_overlap=4 --mdxc_segment_size=256"
+  os.system(prompt)
+
+  for file in os.listdir(directory):
+    if re.search(pattern, file):
+      files_list.append(os.path.join(directory, file))
+
+  stem1_file = files_list[0]
+  stem2_file = files_list[1]
+
+  return stem1_file, stem2_file
+
 def infer_audio(
     model_name,
-    audio_path,
+    audio_path=stem2_file,
     f0_change=0,
     f0_method="rmvpe+",
     min_pitch="50",
@@ -121,9 +171,9 @@ def infer_audio(
     f0_autotune=False,
     audio_format="wav",
     resample_sr=0,
-    hubert_model_path="assets/hubert/hubert_base.pt",
-    rmvpe_model_path="assets/rmvpe/rmvpe.pt",
-    fcpe_model_path="assets/fcpe/fcpe.pt"
+    hubert_model_path="hubert_base.pt",
+    rmvpe_model_path="rmvpe.pt",
+    fcpe_model_path="fcpe.pt"
     ):
     os.environ["rmvpe_model_path"] = rmvpe_model_path
     os.environ["fcpe_model_path"] = fcpe_model_path
