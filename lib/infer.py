@@ -150,9 +150,8 @@ def roformer_separator():
 
 
 def infer_audio(
-    audio_url = download_audio(url)
-    instrumentals_path, vocals_path = roformer_separator()
-
+    audio_url = download_audio(url),
+    instrumentals_path, vocals_path = roformer_separator(audio_url),
     audio_url,
     model_name,
     audio_path=vocals_path,
