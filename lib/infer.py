@@ -155,7 +155,7 @@ def infer_audio(
 
     audio_url,
     model_name,
-    audio_path=instrumentals_path,
+    audio_path=vocals_path,
     f0_change=0,
     f0_method="rmvpe+",
     min_pitch="50",
