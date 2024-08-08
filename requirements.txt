@@ -15,3 +15,8 @@ einops
 local_attention
 torchcrepe==0.0.20
 torchfcpe
+gradio
+
+
+
+
