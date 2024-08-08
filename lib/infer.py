@@ -1,4 +1,4 @@
-import os
+
 import re
 import random
 from scipy.io.wavfile import write
@@ -7,6 +7,7 @@ import numpy as np
 import gradio as gr
 import yt_dlp
 import subprocess
+import os
 import shutil
 import gc
 import torch
@@ -106,10 +107,6 @@ def get_model(voice_model):
 
     return os.path.join(model_dir, model_filename), os.path.join(model_dir, index_filename) if index_filename else ''
 
-
-
-
-
 def infer_audio(
     model_name,
     audio_path,
@@ -133,9 +130,9 @@ def infer_audio(
     f0_autotune=False,
     audio_format="wav",
     resample_sr=0,
-    hubert_model_path="hubert_base.pt",
-    rmvpe_model_path="rmvpe.pt",
-    fcpe_model_path="fcpe.pt"
+    hubert_model_path="assets/hubert/hubert_base.pt",
+    rmvpe_model_path="assets/rmvpe/rmvpe.pt",
+    fcpe_model_path="assets/fcpe/fcpe.pt"
     ):
     os.environ["rmvpe_model_path"] = rmvpe_model_path
     os.environ["fcpe_model_path"] = fcpe_model_path
