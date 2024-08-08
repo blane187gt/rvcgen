@@ -107,7 +107,6 @@ def get_model(voice_model):
     return os.path.join(model_dir, model_filename), os.path.join(model_dir, index_filename) if index_filename else ''
 
 
-
 def download_audio(url):
     ydl_opts = {
         'format': 'bestaudio/best',
@@ -127,7 +126,7 @@ def download_audio(url):
 
         return sample_rate, audio_array
 
-def roformer_separator(roformer_audio, roformer_model, roformer_output_format, roformer_overlap, roformer_segment_size):
+def roformer_separator():
   files_list = []
   files_list.clear()
   directory = "./outputs"
@@ -148,9 +147,15 @@ def roformer_separator(roformer_audio, roformer_model, roformer_output_format, r
 
   return stem1_file, stem2_file
 
+
+
 def infer_audio(
+    audio_url = download_audio(url)
+    instrumentals_path, vocals_path = roformer_separator()
+
+    audio_url,
     model_name,
-    audio_path=stem2_file,
+    audio_path=instrumentals_path,
     f0_change=0,
     f0_method="rmvpe+",
     min_pitch="50",
